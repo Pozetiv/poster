@@ -41,3 +41,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+gem 'jquery-rails', '~> 4.4'
+gem 'slim', '~> 4.1'
+gem 'bootstrap', '~> 4.5'
+gem 'simple_form'
+gem 'devise'

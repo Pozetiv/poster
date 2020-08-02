@@ -20,6 +20,8 @@ class PostsController < ApplicationController
     end
   end
 
+  def show; end
+
   def destroy
     redirect_to posts_path if @post.destroy
   end
@@ -27,7 +29,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:posts).permit(:title, :descriptions)
+    params.require(:post).permit(:title, :descriptions)
   end
 
   def set_post

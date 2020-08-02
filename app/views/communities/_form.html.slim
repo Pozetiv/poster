@@ -1,0 +1,7 @@
+= simple_form_for @community do |f|
+  = f.input :title
+  = f.input :description, as: :text
+  = f.input :category, as: :select, collection: Community::CATEGORY
+  = f.input :logo, as: :file
+  = f.input :private, as: :boolean
+  = f.submit

@@ -27,10 +27,20 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  def show; end
-  
+  def show
+    @posts = @community.posts
+  end
+
   def destroy
     redirect_to communities_path if @community.destroy
+  end
+
+  def subscribes
+    community_subscribes.includes(:user)
+  end
+
+  def approve
+    community_subscribes.where(id: params[:subsribe_id])
   end
 
   private
@@ -40,6 +50,10 @@ class CommunitiesController < ApplicationController
   end
 
   def set_community
-    @community = Community.friendly.find(params[:id])
+    @community ||= Community.friendly.find(params[:id])
+  end
+
+  def community_subscribes
+    @subscribes ||= @community.subscribses
   end
 end

@@ -2,6 +2,14 @@ class PostsController < ApplicationController
   before_action :set_post, except: %i[new create]
   before_action :authenticate_user!
 
+  def index
+    @posts = Post.all
+  end
+
+  def users_posts
+    # @posts = current_user.
+  end
+
   def new
     @post = Post.new
   end
@@ -29,7 +37,7 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:post).permit(:title, :descriptions)
+    params.require(:post).permit(:title, :describe)
   end
 
   def set_post

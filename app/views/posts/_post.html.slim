@@ -1,0 +1,16 @@
+.post.d-flex.justify-content-center.my-3
+  .post_vote_block.mr-2
+    = vote_block(object: object, user: current_user)
+
+  .post_container_block.d-flex.flex-column
+    .post_container_header
+      = post.published_by
+      = time_ago_in_words(post.created_at)
+      - if post.community && user_signed_in?
+        = current_user.decorate.subscribe_or_unsubscribe(id: post.community.id, type: 'Community')
+
+    .post_container_body
+      = post.describe
+    
+    .post_container_footer
+      | comments count

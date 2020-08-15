@@ -1,13 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: %i[new create]
-  before_action :authenticate_user!
+  before_action :set_post, except: %i[index new create]
+  before_action :authenticate_user!, only: %i[down_vote up_vote]
 
   def index
-    @posts = Post.all
-  end
-
-  def users_posts
-    # @posts = current_user.
+    @posts = Post.order(created_at: :desc).decorate
   end
 
   def new
@@ -32,6 +28,16 @@ class PostsController < ApplicationController
 
   def destroy
     redirect_to posts_path if @post.destroy
+  end
+
+  def down_vote
+    @post.downvote_from(current_user)
+    redirect_back(fallback_location: root_path)
+  end
+
+  def up_vote
+    @post.upvote_from(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

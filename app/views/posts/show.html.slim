@@ -1,1 +1,9 @@
-| post show
+#post_block
+  #post_header
+    | Post published by #{@post.published_by} 
+    = time_ago_in_words(@post.created_at)
+  #post_body
+    = @post.describe
+
+= render 'comments/form'
+= render partial: 'comments/index', locals: { commentable: @post, comments: @post.comments }

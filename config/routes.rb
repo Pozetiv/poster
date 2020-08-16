@@ -5,9 +5,12 @@ Rails.application.routes.draw do
       get :up_vote
       get :down_vote
     end
+
+    resources :comments, except: :show
   end
 
   root "posts#index"
+
   resources :subscribes, except: %i[new edit update]
 
   resources :communities do
@@ -15,5 +18,9 @@ Rails.application.routes.draw do
       get :subscribes
       put :approve
     end
+  end
+
+  resources :comments do
+    resources :comments, except: [:show]
   end
 end

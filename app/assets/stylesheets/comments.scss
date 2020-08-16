@@ -1,0 +1,19 @@
+.comment_block {
+  border-left: 1px solid silver;
+
+  .comment__footer {
+    .reply {
+      display: none;
+    }
+
+    #reply_buttoms p {
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+  
+      &:hover {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}

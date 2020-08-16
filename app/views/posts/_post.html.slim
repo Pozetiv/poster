@@ -1,6 +1,6 @@
 .post.d-flex.justify-content-center.my-3
   .post_vote_block.mr-2
-    = vote_block(object: object, user: current_user)
+    = vote_block(object: post, user: current_user)
 
   .post_container_block.d-flex.flex-column
     .post_container_header
@@ -10,7 +10,8 @@
         = current_user.decorate.subscribe_or_unsubscribe(id: post.community.id, type: 'Community')
 
     .post_container_body
+      = link_to post.title, post_path(post)
       = post.describe
     
     .post_container_footer
-      | comments count
+      | Comments  #{post.comments_count}

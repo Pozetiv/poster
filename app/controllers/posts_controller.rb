@@ -24,7 +24,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @commentable = @post
+    @comments = @commentable.comments
+  end
 
   def destroy
     redirect_to posts_path if @post.destroy
@@ -47,6 +50,6 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id]).decorate
   end
 end

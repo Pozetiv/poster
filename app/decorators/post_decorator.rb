@@ -15,4 +15,10 @@ class PostDecorator < ApplicationDecorator
 
     user.nick
   end
+
+  def comments_count
+    count = comments.count
+    comments.each { |comments| count += comments.count_comments }
+    count
+  end
 end

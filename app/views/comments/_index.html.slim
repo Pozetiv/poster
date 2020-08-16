@@ -1,0 +1,25 @@
+- comments.decorate.each do |comment|
+  .d-flex.flex-row.p-2.my-3.comment_block id="comment-#{comment.id}"
+    .commentable__info.d-flex.flex-column.text-center.pr-2
+      = render 'patrial/block_publisher', object: comment
+    .comment__main_part.d-flex.flex-column.flex-wrap.w-100
+      .comment__main__info.d-flex
+        .information.mr-auto
+            small 
+              | Wrote: #{time_ago_in_words(comment.created_at)}
+        .information__buttons.ml-auto
+          - if policy(comment).update? && policy(comment).destroy?
+            = link_to raw('<i class="fa fa-highlighter"></i>'), edit_post_comment_path(commentable, comment.id)
+            = link_to raw('<i class="fa fa-times"></i>'),  post_comment_path(commentable, comment.id), remote: true, method: :delete, data: { confirm: 'Do you want delete commit?' }, class: 'remove-button'
+      .comment__body.d-flex.flex-wrap.text-justify
+        = comment.text
+      .comment__footer.mt-auto
+        #reply_buttoms = comment.reply_count
+        .reply.reply_body
+          = simple_form_for [comment, Comment.new], class: 'w-100' do |reply|
+            .form-group.w-100
+              = reply.input :text, placeholder: "Text a reply", label: false, wrapper: false
+            = reply.button :submit, class: 'btn btn-light pull-right'
+
+          = render partial: 'comments/index', locals: { commentable: comment, comments: comment.comments}      
+  

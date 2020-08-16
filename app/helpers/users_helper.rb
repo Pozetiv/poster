@@ -13,7 +13,7 @@ module UsersHelper
   end
 
   def vote_block(arg)
-    "#{to_vote_up(arg)}<hr>#{arg[:object].cached_votes_total}<hr>#{to_vote_down(arg)}".html_safe
+    # "#{to_vote_up(arg)}<hr>#{arg[:object].cached_votes_total}<hr>#{to_vote_down(arg)}".html_safe
   end
 
   private

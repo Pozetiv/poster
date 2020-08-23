@@ -1,4 +1,4 @@
 = simple_form_for @post do |f|
   = f.input :title
-  = f.input :describe, as: :text
+  = f.input :describe, as: :text, input_html: { class: 'tinymce' }
   = f.submit

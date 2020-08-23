@@ -11,7 +11,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(posts_params)
+    @post = current_user.posts.new(posts_params)
+    if @post.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def edit; end
@@ -39,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def up_vote
-    @post.upvote_from(current_user)
+    @post.liked_by(current_user)
     redirect_back(fallback_location: root_path)
   end
 

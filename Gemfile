@@ -54,3 +54,4 @@ gem 'draper', '~> 3.1'
 gem 'acts_as_votable'
 gem "font-awesome-rails"
 gem "pundit"
+gem 'tinymce-rails'

@@ -1,17 +1,17 @@
-class Comment
+class Comments
   @init: ->
     @bind()
 
   @bind: ->
-    $('.remove-button').on 'ajax:success', @removeComment
+    $('a.remove-button').on 'ajax:success', @removeComment
     $('.comment_block').on 'click', '#reply_buttoms', @showReply
 
-  @removecomment: ->
-    $(this).parents('.comment_block').hide ->
+  @removeComment: ->
+    $(this).parents('.comment_block').slideUp ->
       $(this).remove()
 
   @showReply: ->
     $(this).next().toggle()
 
 $(document).on 'turbolinks:load', ->
-  Comment.init()
+  Comments.init()

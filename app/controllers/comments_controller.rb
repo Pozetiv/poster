@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      render json: {}, status: :accepted
+      render json: { message: 'destroyed' }, status: :ok
     else
       render Json: { error: @comment.errors.messages }, status: :not_acceptable
     end

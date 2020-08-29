@@ -1,0 +1,7 @@
+= @consumers.each do |role, assoc|
+  div id="block_with_#{role}"
+    ul
+      assoc.do |ass|
+        li
+          = user.nick
+          = link_to 'remove',  community_consumer_path([@community, ass]), method: :delete, data: { confirm: 'remove' }

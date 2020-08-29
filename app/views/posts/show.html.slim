@@ -1,9 +1,16 @@
-#post_block
-  #post_header
-    | Post published by #{@post.published_by} 
-    = time_ago_in_words(@post.created_at)
-  #post_body
-    == @post.describe
+- count_comments = @post.comments_count
 
-= render 'comments/form'
-= render partial: 'comments/index', locals: { commentable: @post, comments: @post.comments }
+#post_show_page
+  #post_block
+    #post_header
+      | #{@post.link_to_publisher}
+      = time_ago_in_words(@post.created_at)
+    #post_body
+      == @post.describe
+  - unless count_comments.zero?
+    .target-comments.btn.btn-success.btn-lg.mx-auto
+      = t('View comments')
+    
+  .comments_block.w-100.d-none
+    = render 'comments/form'
+    = render partial: 'comments/index', locals: { commentable: @post, comments: @post.comments }

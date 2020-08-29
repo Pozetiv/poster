@@ -1,0 +1,2 @@
+module Community::ConsumersHelper
+end

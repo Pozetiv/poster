@@ -8,4 +8,6 @@ class Post < ApplicationRecord
   # scope :comments_count, -> { comments.}
   ##TODO write scope to count with inner comments elements
   acts_as_votable
+
+  #TODO add check can create post in community
 end

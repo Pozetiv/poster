@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_180343) do
+ActiveRecord::Schema.define(version: 2020_08_23_131230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,26 @@ ActiveRecord::Schema.define(version: 2020_08_15_180343) do
     t.string "slug"
     t.index ["slug"], name: "index_communities_on_slug", unique: true
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "communiy_consumers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_communiy_consumers_on_community_id"
+    t.index ["user_id"], name: "index_communiy_consumers_on_user_id"
+  end
+
+  create_table "cunsumers", force: :cascade do |t|
+    t.bigint "community_id"
+    t.bigint "user_id"
+    t.integer "role", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_cunsumers_on_community_id"
+    t.index ["user_id"], name: "index_cunsumers_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

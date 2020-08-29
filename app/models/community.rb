@@ -15,4 +15,9 @@ class Community < ApplicationRecord
   friendly_id :title, use: :slugged
 
   alias_attribute :private?, :private
+
+  #TODO add role system with action for any roles
+  #write cand only write
+  #admin can approve/destroy subscribes
+
 end

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :subscribes, except: %i[new edit update]
 
   resources :communities do
+    resources :consumers, except: %i[new edit]
+
     member do
       get :subscribes
       put :approve

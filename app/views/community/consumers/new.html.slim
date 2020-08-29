@@ -1,0 +1,10 @@
+#consumer_new_page
+  = @candidates.each do |candidate|
+    .candidate.d-flex
+      = simple_form_for model: :candidate, url: community_consumers_path(@community), remote: true do |f|
+        = f.hidden_field :user_id, value: canidate.id
+        = candidate.user.nick
+        = f.input :role, as: :select
+        = f.submit
+
+    

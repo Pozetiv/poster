@@ -1,8 +1,5 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: %i[edit update show destroy]
-  # def index
-
-  # end
 
   def new
     @community = Community.new
@@ -42,6 +39,8 @@ class CommunitiesController < ApplicationController
   def approve
     community_subscribes.where(id: params[:subsribe_id])
   end
+
+  # def destroy_subscribe
 
   private
 

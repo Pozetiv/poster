@@ -4,7 +4,7 @@
 
   .post_container_block.d-flex.flex-column
     .post_container_header
-      = post.published_by
+      / = post.published_by
       = time_ago_in_words(post.created_at)
       - if post.community && user_signed_in?
         = current_user.decorate.subscribe_or_unsubscribe(id: post.community.id, type: 'Community')

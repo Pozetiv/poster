@@ -4,7 +4,7 @@ class PostDecorator < ApplicationDecorator
   def link_to_publisher
     text_link = 'Post published by '.concat(published_by)
     if community
-      link_to text_link, community_path(community)
+      # link_to text_link, community_path(community)
     else
       link_to text_link, root_path
     end

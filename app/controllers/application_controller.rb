@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, only: %i[create update destroy]
   include Pundit
+  before_action :authenticate_user!, only: %i[create update destroy]
+  before_action :set_authorize
 end

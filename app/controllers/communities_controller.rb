@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: %i[edit update show destroy]
+  before_action :set_authorize
 
   def new
     @community = Community.new
@@ -54,5 +55,9 @@ class CommunitiesController < ApplicationController
 
   def community_subscribes
     @subscribes ||= @community.subscribses
+  end
+  
+  def set_authorize
+    authorize
   end
 end
